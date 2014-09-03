@@ -1,0 +1,26 @@
+#!/usr/bin/env ruby
+
+require "entryCreater/version"
+require "entryCreater"
+require "thor"
+
+module EntryCreater
+  #= EntryCreater CLI
+  class CLI < Thor
+    default_task :create
+
+    option :storyboard, :type => :string, :aliases => '-s',:required => true, :desc => 'storyboard'
+    option :to, :type => :string, :aliases => '-t', :desc => 'out put to the directory'
+    desc "create", "create Translation.strings"
+    def create
+      EntryCreater::Core.new.create(options[:storyboard], options[:from], options[:to], option[:string])
+      puts 'Generate'
+    end
+    desc "version", "version"
+    def version
+      p EntryCreater::VERSION
+    end
+  end
+end
+
+EntryCreater::CLI.start(ARGV)
