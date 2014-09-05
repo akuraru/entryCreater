@@ -1,16 +1,19 @@
-#import "MainEntry.h"
+#import "_MainEntry.h"
+#import "CViewController.h"
+#import "TableViewController.h"
+#import "DViewController.h"
 
-@implementation MainEntry {
+@implementation _MainEntry {
 }
 + (NSString *)storyboardName {
     return @"Main";
 }
 
 - (void)c:(TableViewController *)controller block:(void(^)(CViewController *))block {
-    [self performSegueWithIdentifier:@"C" block:block];
+    [controller performSegueWithIdentifier:@"C" block:block];
 }
 
 - (void)d:(CViewController *)controller block:(void(^)(DViewController *))block {
-    [self performSegueWithIdentifier:@"D" block:block];
+    [controller performSegueWithIdentifier:@"D" block:block];
 }
 @end
